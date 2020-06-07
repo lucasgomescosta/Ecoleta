@@ -112,8 +112,9 @@ const CreatePoint = () => {
   }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>){
+    console.log(event.target)
     const { name, value } = event.target;
-
+    
     setFormData({...formData, [name]: value})
   }
 
@@ -133,7 +134,7 @@ const CreatePoint = () => {
     event.preventDefault();
 
     
-
+    console.log(formData)
     const { name, email, whatsapp } = formData;
     const uf = selectedUf;
     const city = selectedCity;
@@ -150,6 +151,8 @@ const CreatePoint = () => {
       data.append('latitude', String(latitude));
       data.append('longitude', String(longitude));
       data.append('items', items.join(','));
+      
+      console.log(data)
       
       if(selectedFile){
         data.append('image', selectedFile);
@@ -201,6 +204,7 @@ const CreatePoint = () => {
                 type="email"
                 name="email"
                 id="email"
+                onChange={handleInputChange}
               />
             </div>
 
@@ -210,6 +214,7 @@ const CreatePoint = () => {
                 type="text"
                 name="whatsapp"
                 id="whatsapp"
+                onChange={handleInputChange}
               />
             </div>
           </div>
